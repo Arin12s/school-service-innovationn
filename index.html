@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart School Innovation</title>
+<style>
+:root{--navy:#17324d;--blue:#28658a;--gold:#e6ad45;--bg:#f3f7fa;--ink:#243447;--muted:#657789;--line:#dce5ec;--green:#198754;--red:#c0392b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(120deg,#17324d,#28658a);color:white;padding:34px 18px}
+.wrap{max-width:1100px;margin:auto;padding:0 16px}.eyebrow{letter-spacing:.12em;font-size:12px;font-weight:bold;color:#f4cf82}
+h1{font-size:clamp(27px,5vw,42px);line-height:1.12;margin:8px 0}header p{max-width:760px;color:#e5edf3;margin:10px 0 0}
+main{padding:24px 0 50px}.intro,.card,.service{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 14px #17324d0a}
+.intro{padding:18px;margin-bottom:20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px}
+.card{padding:17px}.card h2{font-size:19px;margin:0 0 5px;color:var(--navy)}.num{font-size:12px;color:var(--blue);font-weight:bold;letter-spacing:.08em}
+.card p{color:var(--muted);font-size:14px;margin:5px 0 13px}.qr{width:150px;height:150px;margin:12px auto;display:flex;align-items:center;justify-content:center;background:#fff;border:1px dashed var(--line);border-radius:8px}
+.qr canvas,.qr img{max-width:140px;max-height:140px}
+a.btn,button{display:inline-block;background:var(--blue);color:white;border:0;border-radius:9px;padding:10px 14px;text-decoration:none;font-weight:bold;cursor:pointer;font-size:14px}
+button.secondary,a.secondary{background:#edf3f7;color:var(--navy)}button.danger{background:#fff0ef;color:var(--red)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.service{padding:22px;margin:18px 0;scroll-margin-top:15px}
+.service h2{margin:0;color:var(--navy);font-size:24px}.tag{display:inline-block;background:#eaf2f7;color:#245575;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:bold;margin:7px 0}
+.cols{display:grid;grid-template-columns:1fr 1.1fr;gap:18px}.panel{background:#f7fafc;border-radius:12px;padding:15px}
+label{display:block;font-weight:bold;font-size:13px;margin:10px 0 5px}input,select,textarea{width:100%;padding:11px;border:1px solid #cbd7e0;border-radius:8px;background:white;font:inherit}
+textarea{min-height:80px;resize:vertical}form button{margin-top:12px}.note{font-size:12px;color:var(--muted)}.toplink{font-size:13px;color:var(--blue);font-weight:bold;text-decoration:none}
+.data-table{width:100%;border-collapse:collapse;background:white;border-radius:10px;overflow:hidden;font-size:14px;margin:10px 0}
+.data-table th,.data-table td{padding:10px;text-align:left;border-bottom:1px solid var(--line)}.data-table th{background:#edf3f7;color:var(--navy)}
+.status{display:inline-block;border-radius:20px;padding:3px 9px;font-size:12px;font-weight:bold}.available{background:#e5f5eb;color:#176b3a}.used{background:#fff0df;color:#9a5700}.unavailable{background:#fde9e7;color:#a52a20}
+.notice{padding:11px;border-radius:9px;background:#fff8e8;color:#76520d;font-size:13px;margin:10px 0}
+.item-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.mini{background:white;border:1px solid var(--line);border-radius:10px;padding:12px}.mini b{display:block;color:var(--navy)}
+footer{text-align:center;padding:22px;color:var(--muted);font-size:12px}
+@media(max-width:680px){.cols{grid-template-columns:1fr}.qr{margin:10px auto}.service{padding:16px}.data-table{font-size:12px}.data-table th,.data-table td{padding:7px}}
+@media print{header .wrap>p,.intro .noprint,.actions{display:none}.card{break-inside:avoid}.qr{border:0}body{background:white}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">PROTOTIPE INOVASI MANAJEMEN BERBASIS SEKOLAH</div>
+<h1>SMART SCHOOL<br>INNOVATION</h1>
+<p>Satu pintu digital untuk mengenal fasilitas, melihat informasi terkini, dan mengakses layanan sekolah melalui QR Code.</p>
+</div></header>
+<main class="wrap">
+<div class="intro">
+<h2 style="margin:0 0 6px;color:#17324d">Pusat QR Code — 7 Inovasi Sekolah</h2>
+<p style="margin:0 0 12px;color:#657789">Pindai QR sesuai fasilitas yang ingin diketahui. Setiap QR membuka halaman layanan khusus.</p>
+<div class="actions noprint"><button onclick="window.print()">Cetak halaman QR</button><a class="btn secondary" href="#layanan">Jelajahi inovasi</a></div>
+</div>
+<div class="grid" id="qrgrid"></div>
+<div id="layanan"></div>
+
+<section class="service" id="aspiration">
+<div class="num">INOVASI 01</div><h2>Aspiration Corner</h2><span class="tag">Pusat aspirasi, ide, dan pengaduan</span>
+<div class="cols"><div><h3>Ruang suara warga sekolah</h3><p>Siswa, guru, dan orang tua dapat menyampaikan ide pengembangan sekolah, kritik, saran, maupun laporan kendala fasilitas dan pelayanan.</p><ul><li>Usulan kegiatan dan program sekolah</li><li>Masukan fasilitas dan lingkungan</li><li>Laporan masalah keamanan atau kenyamanan</li><li>Evaluasi pelayanan sekolah</li></ul></div>
+<div class="panel"><h3>Sampaikan aspirasi</h3><form onsubmit="saveForm(event,'Aspirasi')"><label>Nama (opsional)</label><input placeholder="Nama pengirim"><label>Kategori</label><select required><option value="">Pilih kategori</option><option>Ide inovasi sekolah</option><option>Fasilitas</option><option>Pembelajaran</option><option>Kebersihan dan keamanan</option><option>Lainnya</option></select><label>Pesan</label><textarea required placeholder="Tuliskan ide, saran, atau laporan..."></textarea><button>Kirim aspirasi</button></form></div></div></section>
+
+<section class="service" id="administration">
+<div class="num">INOVASI 02</div><h2>Smart Administration</h2><span class="tag">Pusat informasi administrasi digital</span>
+<div class="cols"><div><h3>Layanan tata usaha</h3><p>Pengguna dapat mengetahui jenis layanan administrasi, persyaratan, dan waktu pelayanan sebelum datang ke kantor tata usaha.</p>
+<table class="data-table"><tr><th>Jenis layanan</th><th>Persyaratan contoh</th></tr><tr><td>Surat keterangan siswa</td><td>Identitas dan kelas</td></tr><tr><td>Legalisasi dokumen</td><td>Dokumen asli dan salinan</td></tr><tr><td>Surat pindah</td><td>Konsultasi dengan TU</td></tr><tr><td>Informasi data sekolah</td><td>Keperluan pemohon</td></tr></table><p><b>Jam layanan contoh:</b> Senin–Jumat, 08.00–14.00.</p></div>
+<div class="panel"><h3>Ajukan konsultasi layanan</h3><form onsubmit="saveForm(event,'Administrasi')"><label>Nama pemohon</label><input required placeholder="Nama lengkap"><label>Status</label><select required><option value="">Pilih</option><option>Siswa</option><option>Orang tua/wali</option><option>Guru/staf</option><option>Lainnya</option></select><label>Jenis layanan</label><select required><option value="">Pilih layanan</option><option>Surat keterangan siswa</option><option>Legalisasi dokumen</option><option>Surat pindah</option><option>Konsultasi lainnya</option></select><label>Catatan</label><textarea placeholder="Tuliskan pertanyaan atau keperluan"></textarea><button>Kirim permintaan konsultasi</button></form></div></div></section>
+
+<section class="service" id="library">
+<div class="num">INOVASI 03</div><h2>Smart Library</h2><span class="tag">Katalog buku dan informasi perpustakaan</span>
+<div class="cols"><div><h3>Jelajahi koleksi buku</h3><p>Siswa dapat mencari buku berdasarkan judul atau kategori, melihat jumlah koleksi yang tersedia, dan mengetahui status buku sebelum berkunjung.</p>
+<label for="bookSearch">Cari judul atau kategori buku</label><input id="bookSearch" oninput="renderBooks()" placeholder="Contoh: Sriwijaya, novel, sains">
+<div id="bookCatalog"></div><p class="note">Ketersediaan di bawah adalah data contoh untuk demonstrasi. Petugas perpustakaan dapat memperbarui datanya.</p></div>
+<div class="panel"><h3>Informasi dan layanan perpustakaan</h3><div class="item-list"><div class="mini"><b>Jam buka</b>Senin–Jumat<br>07.30–14.00</div><div class="mini"><b>Aturan pinjam</b>Contoh: maksimal 2 buku selama 7 hari</div><div class="mini"><b>Lokasi</b>Gedung perpustakaan sekolah</div></div>
+<form onsubmit="saveForm(event,'Perpustakaan')"><h3>Ajukan peminjaman / usulan buku</h3><label>Nama dan kelas</label><input required placeholder="Nama - kelas"><label>Jenis layanan</label><select required><option value="">Pilih</option><option>Meminta peminjaman buku</option><option>Memesan buku yang sedang dipinjam</option><option>Mengusulkan buku baru</option><option>Bertanya kepada petugas</option></select><label>Judul buku / pesan</label><textarea required placeholder="Tuliskan judul buku atau pesan"></textarea><button>Kirim permintaan</button></form></div></div></section>
+
+<section class="service" id="health">
+<div class="num">INOVASI 04</div><h2>Healthy School & UKS</h2><span class="tag">Informasi kesehatan dan fasilitas UKS</span>
+<div class="cols"><div><h3>Informasi UKS</h3><p>Halaman ini membantu warga sekolah mengetahui fasilitas UKS, jadwal petugas, dan informasi perilaku hidup bersih dan sehat.</p>
+<div class="item-list"><div class="mini"><b>Fasilitas</b>Tempat istirahat, kotak P3K, termometer</div><div class="mini"><b>Jadwal contoh</b>Senin–Jumat, jam sekolah</div><div class="mini"><b>Program</b>PHBS, pemeriksaan kebersihan, edukasi kesehatan</div></div>
+<div class="notice">Jika terjadi kondisi darurat, segera hubungi guru atau petugas UKS secara langsung. Website ini bukan pengganti pertolongan medis.</div></div>
+<div class="panel"><h3>Informasi / permintaan bantuan</h3><form onsubmit="saveForm(event,'UKS')"><label>Nama dan kelas</label><input required placeholder="Nama - kelas"><label>Keperluan</label><select required><option value="">Pilih</option><option>Meminta bantuan petugas UKS</option><option>Menanyakan jadwal UKS</option><option>Menanyakan fasilitas yang tersedia</option><option>Usulan perlengkapan</option></select><label>Keterangan singkat</label><textarea placeholder="Jangan tuliskan data medis pribadi yang sensitif"></textarea><button>Kirim</button></form></div></div></section>
+
+<section class="service" id="lab">
+<div class="num">INOVASI 05</div><h2>Smart Laboratory</h2><span class="tag">Informasi status dan jadwal laboratorium</span>
+<div class="cols"><div><h3>Cek penggunaan laboratorium</h3><p>Pengguna dapat mengecek apakah laboratorium sedang digunakan, melihat jadwal kegiatan, dan mengetahui waktu kosong untuk merencanakan praktikum.</p>
+<label for="labDay">Pilih hari</label><select id="labDay" onchange="renderLab()"><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select><div id="labStatus"></div>
+<p class="note">Status dan jadwal merupakan data contoh. Pembaruan kondisi nyata harus dilakukan oleh guru atau laboran.</p></div>
+<div class="panel"><h3>Ajukan penggunaan laboratorium</h3><form onsubmit="saveForm(event,'Laboratorium')"><label>Nama guru / pemohon</label><input required placeholder="Nama pemohon"><label>Laboratorium</label><select required><option value="">Pilih ruang</option><option>Lab IPA</option><option>Lab Komputer</option><option>Lab Bahasa</option></select><label>Hari yang diajukan</label><select required><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select><label>Jam penggunaan</label><select required><option value="">Pilih jam</option><option>08.00–09.30</option><option>09.30–11.00</option><option>11.00–12.30</option><option>13.00–14.30</option></select><label>Keperluan</label><textarea required placeholder="Mata pelajaran dan kegiatan"></textarea><button>Ajukan jadwal</button></form></div></div></section>
+
+<section class="service" id="classroom">
+<div class="num">INOVASI 06</div><h2>Smart Classroom</h2><span class="tag">Pusat informasi dan pendukung pembelajaran</span>
+<div class="cols"><div><h3>Akses kegiatan belajar</h3><p>Satu halaman untuk melihat informasi kelas, agenda belajar, materi digital, dan tautan pendukung pembelajaran.</p>
+<table class="data-table"><tr><th>Fitur</th><th>Contoh isi</th></tr><tr><td>Agenda kelas</td><td>Jadwal ulangan dan proyek</td></tr><tr><td>Materi digital</td><td>Modul, video, bahan bacaan</td></tr><tr><td>Informasi tugas</td><td>Petunjuk dan tenggat tugas</td></tr><tr><td>Refleksi</td><td>Umpan balik pembelajaran</td></tr></table></div>
+<div class="panel"><h3>Refleksi pembelajaran</h3><form onsubmit="saveForm(event,'Refleksi kelas')"><label>Nama dan kelas</label><input required placeholder="Nama - kelas"><label>Mata pelajaran</label><input required placeholder="Contoh: Sejarah"><label>Pemahaman materi</label><select required><option value="">Pilih</option><option>Sangat memahami</option><option>Cukup memahami</option><option>Masih perlu penjelasan</option></select><label>Pertanyaan atau masukan</label><textarea placeholder="Tuliskan refleksi"></textarea><button>Kirim refleksi</button></form></div></div></section>
+
+<section class="service" id="canteen">
+<div class="num">INOVASI 07</div><h2>Smart Canteen</h2><span class="tag">Katalog menu, harga, dan informasi kantin</span>
+<div class="cols"><div><h3>Menu kantin hari ini</h3><p>Siswa dapat melihat contoh menu dan harga sebelum membeli. Pengelola dapat memperbarui daftar menu sesuai ketersediaan harian.</p>
+<table class="data-table"><tr><th>Menu</th><th>Harga contoh</th><th>Kategori</th></tr><tr><td>Nasi ayam</td><td>Rp12.000</td><td>Makanan</td></tr><tr><td>Roti isi</td><td>Rp5.000</td><td>Camilan</td></tr><tr><td>Buah potong</td><td>Rp5.000</td><td>Sehat</td></tr><tr><td>Air mineral</td><td>Rp3.000</td><td>Minuman</td></tr><tr><td>Susu</td><td>Rp5.000</td><td>Minuman</td></tr></table><p class="note">Harga dan menu hanya contoh, bukan informasi resmi kantin.</p></div>
+<div class="panel"><h3>Penilaian dan masukan kantin</h3><form onsubmit="saveForm(event,'Kantin')"><label>Nama (opsional)</label><input placeholder="Nama siswa"><label>Jenis masukan</label><select required><option value="">Pilih</option><option>Menu dan harga</option><option>Kebersihan</option><option>Kualitas makanan</option><option>Pelayanan</option><option>Usulan menu sehat</option></select><label>Pesan</label><textarea required placeholder="Tuliskan masukan"></textarea><button>Kirim masukan</button></form></div></div></section>
+<footer>SMART SCHOOL INNOVATION · Prototipe layanan digital sekolah<br>Data katalog, jadwal, status, dan harga pada versi ini adalah data contoh. Gunakan sistem resmi sekolah untuk operasional nyata.</footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const items=[
+['01','Aspiration Corner','Ide, saran, dan pengaduan','aspiration'],
+['02','Smart Administration','Informasi layanan tata usaha','administration'],
+['03','Smart Library','Cari buku dan cek ketersediaan','library'],
+['04','Healthy School & UKS','Informasi fasilitas dan layanan UKS','health'],
+['05','Smart Laboratory','Cek status dan jadwal laboratorium','lab'],
+['06','Smart Classroom','Informasi dan refleksi pembelajaran','classroom'],
+['07','Smart Canteen','Lihat menu dan harga kantin','canteen']
+];
+const base=location.href.split('#')[0],grid=document.getElementById('qrgrid');
+items.forEach(([n,name,desc,id])=>{
+ const card=document.createElement('article');card.className='card';
+ card.innerHTML=`<div class="num">QR CODE ${n}</div><h2>${name}</h2><p>${desc}</p><div class="qr" id="qr${n}">QR akan tampil setelah halaman dimuat</div><div class="actions"><a class="btn" href="#${id}">Buka layanan</a><a class="btn secondary" href="${base}#${id}" target="_blank">Buka tautan</a></div>`;
+ grid.appendChild(card);
+ if(window.QRCode){const target=document.getElementById('qr'+n);target.innerHTML='';new QRCode(target,{text:base+'#'+id,width:140,height:140,correctLevel:QRCode.CorrectLevel.M});}
+});
+const books=[
+{title:'Sejarah Indonesia',category:'Sejarah',author:'Tim Penyusun',stock:3,total:4},
+{title:'Kerajaan Sriwijaya',category:'Sejarah',author:'Koleksi Sejarah',stock:2,total:2},
+{title:'Atlas Indonesia',category:'Referensi',author:'Penerbit Edukasi',stock:0,total:2},
+{title:'Ensiklopedia Sains',category:'Sains',author:'Tim Ilmu Pengetahuan',stock:4,total:4},
+{title:'Novel Laskar Pelangi',category:'Novel',author:'Andrea Hirata',stock:1,total:3},
+{title:'Matematika SMP',category:'Pelajaran',author:'Tim Pendidikan',stock:5,total:5}
+];
+function renderBooks(){
+ const q=(document.getElementById('bookSearch').value||'').toLowerCase();
+ const found=books.filter(b=>(b.title+' '+b.category+' '+b.author).toLowerCase().includes(q));
+ document.getElementById('bookCatalog').innerHTML=found.length?`<table class="data-table"><tr><th>Buku</th><th>Ketersediaan</th></tr>${found.map(b=>`<tr><td><b>${b.title}</b><br><small>${b.category} · ${b.author}</small></td><td>${b.stock>0?`<span class="status available">Tersedia</span><br>${b.stock} dari ${b.total} buku`:`<span class="status unavailable">Sedang dipinjam</span>`}</td></tr>`).join('')}</table>`:'<p>Buku tidak ditemukan.</p>';
+}
+const labSchedule={
+'Senin':[['Lab IPA','08.00–09.30','Praktikum kelas VIII','used'],['Lab Komputer','09.30–11.00','Kosong','available'],['Lab Bahasa','13.00–14.30','Pembelajaran bahasa','used']],
+'Selasa':[['Lab IPA','08.00–09.30','Kosong','available'],['Lab Komputer','09.30–11.00','Kelas IX','used'],['Lab Bahasa','13.00–14.30','Kosong','available']],
+'Rabu':[['Lab IPA','08.00–09.30','Kelas VII','used'],['Lab Komputer','09.30–11.00','Kosong','available'],['Lab Bahasa','13.00–14.30','Kosong','available']],
+'Kamis':[['Lab IPA','08.00–09.30','Kosong','available'],['Lab Komputer','09.30–11.00','Praktik TIK','used'],['Lab Bahasa','13.00–14.30','Kosong','available']],
+'Jumat':[['Lab IPA','08.00–09.30','Kosong','available'],['Lab Komputer','09.30–11.00','Kosong','available'],['Lab Bahasa','13.00–14.30','Kegiatan kelas','used']]
+};
+function renderLab(){
+ const day=document.getElementById('labDay').value,rows=labSchedule[day];
+ document.getElementById('labStatus').innerHTML=`<table class="data-table"><tr><th>Ruang</th><th>Jam</th><th>Status</th></tr>${rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td><span class="status ${r[3]}">${r[2]}</span></td></tr>`).join('')}</table>`;
+}
+function saveForm(e,name){
+ e.preventDefault();
+ const data=Object.fromEntries(new FormData(e.target).entries());
+ const entry={service:name,data,time:new Date().toLocaleString('id-ID')};
+ const all=JSON.parse(localStorage.getItem('schoolDemoSubmissions')||'[]');all.push(entry);
+ localStorage.setItem('schoolDemoSubmissions',JSON.stringify(all));
+ alert('Terima kasih! Data '+name+' tersimpan pada browser ini sebagai simulasi. Untuk menerima dan mengelola kiriman dari banyak pengguna, website perlu dihubungkan ke layanan penyimpanan atau sistem sekolah.');
+ e.target.reset();
+}
+renderBooks();renderLab();
+</script>
+</body>
+</html>
